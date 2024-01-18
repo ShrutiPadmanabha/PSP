@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Plays</title>
+</head>
+<body>
+    <h1>List of Plays</h1>
+    <table border="1">
+        <tr>
+            <th>PlayID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Duration</th>
+            <th>Genre</th>
+            <th>Director</th>
+            <th>Language</th>
+            <th>Rating</th>
+            <th>Action</th> <!-- New column for the booking link -->
+            <th>Action</th> <!-- New column for the go back link -->
+            <th>Action</th> <!-- New column for the add plays button -->
+        </tr>
+        {% for play in plays %}
+            <tr>
+                <td>{{ play[0] }}</td>
+                <td>{{ play[1] }}</td>
+                <td>{{ play[2] }}</td>
+                <td>{{ play[3] }}</td>
+                <td>{{ play[4] }}</td>
+                <td>{{ play[5] }}</td>
+                <td>{{ play[6] }}</td>
+                <td>{{ play[7] }}</td>
+                <td>
+                  
+
+                   <!-- <a href="{{ url_for('book_ticket', play_id=play[0]) }}">Book Tickets</a>-->
+                </td>
+                <td>
+                    <a href="{{ url_for('index') }}">Go Back</a>
+                </td>
+                <td>
+                    <a href="{{ url_for('add_play') }}">Add Play</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

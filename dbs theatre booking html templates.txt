@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        form {
+            max-width: 300px;
+            margin: auto;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>User Registration</h2>
+    <form action="/add_user1" method="post">
+        <input type="text" name="first_name" placeholder="First Name" required>
+        <input type="text" name="last_name" placeholder="Last Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="tel" name="phone_number" placeholder="Phone Number" required>
+        <input type="text" name="address" placeholder="Address" required>
+        <select name="user_type" required>
+            <option value="" disabled selected>Select User Type</option>
+            <option value="customer">Customer</option>
+            <option value="admin">Admin</option>
+        </select>
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>
+---------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theatre Booking Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .welcome-message {
+            font-size: 24px;
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+
+        .page-link {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #ffffff;
+            background-color: #28a745;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .page-link:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Theatre Booking Website!</h1>
+    <p class="welcome-message">Explore our plays, theatres, and shows</p>
+    <img src="Theatre.jpg" alt="Theatre Image" width="300">
+    <br>
+    <a class="page-link" href="{{ url_for('plays') }}">View Plays</a>
+    <a class="page-link" href="{{ url_for('theatres') }}">View Theatres</a>
+    <a class="page-link" href="{{ url_for('shows') }}">View Shows</a>
+    <br><br>
+    <a class="page-link" href="{{ url_for('login_existing_user') }}">Login</a>
+    <a class="page-link" href="{{ url_for('add_user1') }}">Register</a>
+</body>
+</html>
+
+
+
+<!-- Your existing head content 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theatre Booking Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .welcome-message {
+            font-size: 24px;
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+
+        .page-link {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #ffffff;
+            background-color: #28a745;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .page-link:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Theatre Booking Website!</h1>
+    <p class="welcome-message">Explore our plays, theatres, and shows</p>
+    <img src="path_to_your_image.jpg" alt="Theatre.jpg" width="300">
+    <br>
+    <a class="page-link" href="{{ url_for('plays') }}">View Plays</a>
+    <a class="page-link" href="{{ url_for('theatres') }}">View Theatres</a>
+    <a class="page-link" href="{{ url_for('shows') }}">View Shows</a>
+    
+</body>
+</html>
+
+
+-->
+---------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Tickets</title>
+</head>
+<body>
+    <h1>Book Tickets</h1>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <form method="post" action="{{ url_for('book_ticket', show_id=show_id) }}">
+        <label for="user_email">User Email:</label>
+        <input type="email" name="user_email" required>
+
+        <label for="num_tickets">Number of Tickets:</label>
+        <input type="number" name="num_tickets" required>
+
+        <label for="booking_date">Booking Date:</label>
+        <input type="date" name="booking_date" required>
+
+        <!-- Add a hidden input field to store TicketPrice -->
+        <input type="hidden" name="ticket_price" value="{{ show[4] }}">
+
+        <label for="total_price">Total Price:</label>
+        <!-- Add a readonly field to display TicketPrice -->
+        <input type="number" name="total_price" value="{{ show[4] }}" readonly required>
+
+        <button type="submit">Book Tickets</button>
+    </form>
+
+    <p><a href="{{ url_for('shows') }}">Back to Shows</a></p>
+</body>
+</html>
+-----------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Shows</title>
+</head>
+<body>
+    <h1>List of Shows</h1>
+    <table border="1">
+        <tr>
+            <th>ShowID</th>
+            <th>playID</th>
+            <th>TheatreID</th>
+            <th>ShowDateTime</th>
+            <th>TicketPrice</th>
+            <th>AvailableTickets</th>
+            <th>Status</th>
+            <th>Action</th> <!-- New column for the booking link -->
+        </tr>
+        {% for show in shows %}
+            <tr>
+                <td>{{ show[0] }}</td>
+                <td>{{ show[1] }}</td>
+                <td>{{ show[2] }}</td>
+                <td>{{ show[3] }}</td>
+                <td>{{ show[4] }}</td>
+                <td>{{ show[5] }}</td>
+                <td>{{ show[6] }}</td>
+                <td>
+                   <a href="{{ url_for('book_ticket', show_id=show[0]) }}">Book Tickets</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <p><a href="{{ url_for('index') }}">Back to Homepage</a></p>
+</body>
+</html>
+-----------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Plays</title>
+</head>
+<body>
+    <h1>List of Plays</h1>
+    <table border="1">
+        <tr>
+            <th>PlayID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Duration</th>
+            <th>Genre</th>
+            <th>Director</th>
+            <th>Language</th>
+            <th>Rating</th>
+        </tr>
+        {% for play in plays %}
+            <tr>
+                <td>{{ play[0] }}</td>
+                <td>{{ play[1] }}</td>
+                <td>{{ play[2] }}</td>
+                <td>{{ play[3] }}</td>
+                <td>{{ play[4] }}</td>
+                <td>{{ play[5] }}</td>
+                <td>{{ play[6] }}</td>
+                <td>{{ play[7] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <p><a href="{{ url_for('index') }}">Back to Homepage</a></p>
+</body>
+</html>
+------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Theatres</title>
+</head>
+<body>
+    <h1>List of Theatres</h1>
+    <table border="1">
+        <tr>
+            <th>TheatreID</th>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Capacity</th>
+            <th>Facilities</th>
+            <th>Action</th> <!-- You can add an action column if needed -->
+        </tr>
+        {% for theatre in theatres %}
+            <tr>
+                <td>{{ theatre[0] }}</td>
+                <td>{{ theatre[1] }}</td>
+                <td>{{ theatre[2] }}</td>
+                <td>{{ theatre[3] }}</td>
+                <td>{{ theatre[4] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <p><a href="{{ url_for('index') }}">Back to Homepage</a></p>
+</body>
+</html>
+------------------------------------

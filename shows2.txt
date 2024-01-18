@@ -1,0 +1,40 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Shows</title>
+</head>
+<body>
+    <h1>List of Shows</h1>
+    <table border="1">
+        <tr>
+            <th>ShowID</th>
+            <th>PlayID</th>
+            <th>TheatreID</th>
+            <th>ShowDateTime</th>
+            <th>TicketPrice</th>
+            <th>AvailableTickets</th>
+            <th>Status</th>
+            <th>Action</th> <!-- New column for the booking link -->
+        </tr>
+        {% for show in shows %}
+            <tr>
+                <td>{{ show.ShowID }}</td>
+                <td>{{ show.playID }}</td>
+                <td>{{ show.TheatreID }}</td>
+                <td>{{ show.ShowDateTime }}</td>
+                <td>{{ show.TicketPrice }}</td>
+                <td>{{ show.AvailableTickets }}</td>
+                <td>{{ show.Status }}</td>
+                <td>
+                    <a href="{{ url_for('book_ticket', show_id=show.ShowID) }}">Book Tickets</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <p><a href="{{ url_for('index') }}">Back to Homepage</a></p>
+</body>
+</html>

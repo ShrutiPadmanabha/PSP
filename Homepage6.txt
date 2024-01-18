@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theatre Booking Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .welcome-message {
+            font-size: 24px;
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+
+        .page-link {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #ffffff;
+            background-color: #28a745;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .page-link:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Theatre Booking Website!</h1>
+    <p class="welcome-message">Explore our plays, theatres, and shows</p>
+    <img src="path_to_your_image.jpg" alt="Theatre Image" width="300">
+    <br>
+    <a class="page-link" href="{{ url_for('plays') }}">View Plays</a>
+    <a class="page-link" href="{{ url_for('theatres') }}">View Theatres</a>
+    <a class="page-link" href="{{ url_for('shows') }}">View Shows</a>
+    <br><br>
+    <a class="login-link" href="{{ url_for('login_existing_user') }}">Login</a>
+    <a class="register-link" href="{{ url_for('add_user1') }}">Register</a>
+</body>
+</html>
+
+
+
+<!-- Your existing head content 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theatre Booking Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .welcome-message {
+            font-size: 24px;
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+
+        .page-link {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #ffffff;
+            background-color: #28a745;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .page-link:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Theatre Booking Website!</h1>
+    <p class="welcome-message">Explore our plays, theatres, and shows</p>
+    <img src="path_to_your_image.jpg" alt="Theatre.jpg" width="300">
+    <br>
+    <a class="page-link" href="{{ url_for('plays') }}">View Plays</a>
+    <a class="page-link" href="{{ url_for('theatres') }}">View Theatres</a>
+    <a class="page-link" href="{{ url_for('shows') }}">View Shows</a>
+    
+</body>
+</html>
+
+
+-->

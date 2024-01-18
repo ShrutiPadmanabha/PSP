@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Tickets</title>
+</head>
+<body>
+    <h1>Book Tickets</h1>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <form method="post" action="{{ url_for('book_ticket', show_id=show_id) }}">
+        <label for="user_email">User Email:</label>
+        <input type="email" name="user_email" required>
+
+        <label for="num_tickets">Number of Tickets:</label>
+        <input type="number" name="num_tickets" required>
+
+        <button type="submit">Book Tickets</button>
+    </form>
+
+    <p><a href="{{ url_for('plays') }}">Back to Plays</a></p>
+</body>
+</html>
